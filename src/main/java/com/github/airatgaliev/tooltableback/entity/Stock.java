@@ -1,7 +1,7 @@
 package com.github.airatgaliev.tooltableback.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,13 +16,13 @@ public class Stock extends AbstractEntity {
   @JoinColumn(name = "company_id", nullable = false)
   private Company company;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
-  private Calendar date;
+  private LocalDate date;
   private double price;
 
   public Stock() {
   }
 
-  public Stock(Company company, Calendar date, double price) {
+  public Stock(Company company, LocalDate date, double price) {
     this.company = company;
     this.date = date;
     this.price = price;
@@ -36,11 +36,11 @@ public class Stock extends AbstractEntity {
     this.company = company;
   }
 
-  public Calendar getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
-  public void setDate(Calendar date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 

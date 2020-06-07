@@ -4,7 +4,8 @@ import com.github.airatgaliev.tooltableback.entity.Company;
 import com.github.airatgaliev.tooltableback.entity.Stock;
 import com.github.airatgaliev.tooltableback.repository.CompanyRepository;
 import com.github.airatgaliev.tooltableback.repository.StockRepository;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +32,18 @@ public class LoadDatabase {
     companyRepository.save(company2);
     Company company3 = new Company("Сбербанк");
     companyRepository.save(company3);
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     return args -> {
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company1, new GregorianCalendar(2019, 1, 1), 2000)));
+          .save(new Stock(company1, LocalDate.parse("01.01.2019", dateTimeFormatter), 2000)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company2, new GregorianCalendar(2019, 1, 1), 2500)));
+          .save(new Stock(company2, LocalDate.parse("01.01.2019", dateTimeFormatter), 2500)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company3, new GregorianCalendar(2019, 1, 5), 10000)));
+          .save(new Stock(company3, LocalDate.parse("05.01.2019", dateTimeFormatter), 10000)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company1, new GregorianCalendar(2019, 1, 10), 2500)));
+          .save(new Stock(company1, LocalDate.parse("10.01.2019", dateTimeFormatter), 2500)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company2, new GregorianCalendar(2019, 10, 7), 2100)));
+          .save(new Stock(company2, LocalDate.parse("07.10.2019", dateTimeFormatter), 2100)));
     };
   }
 }
