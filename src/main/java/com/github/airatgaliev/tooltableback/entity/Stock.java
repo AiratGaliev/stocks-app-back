@@ -1,6 +1,7 @@
 package com.github.airatgaliev.tooltableback.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ public class Stock extends AbstractEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
   @JoinColumn(name = "company_id", nullable = false)
+  @JsonIgnore
   private Company company;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
   private LocalDate date;
@@ -26,10 +28,6 @@ public class Stock extends AbstractEntity {
     this.company = company;
     this.date = date;
     this.price = price;
-  }
-
-  public Long getCompanyId() {
-    return company.getId();
   }
 
   public void setCompany(Company company) {
