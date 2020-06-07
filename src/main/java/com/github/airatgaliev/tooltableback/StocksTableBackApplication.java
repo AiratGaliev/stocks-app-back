@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ToolTableBackApplication {
+public class StocksTableBackApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ToolTableBackApplication.class, args);
-    }
-
+  public static void main(String[] args) {
+    SpringApplication.run(StocksTableBackApplication.class, args);
+  }
 }
