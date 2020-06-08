@@ -32,10 +32,6 @@ public class Company extends AbstractEntity {
     this.name = name;
   }
 
-  public List<Stock> getStocks() {
-    return stocks;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {

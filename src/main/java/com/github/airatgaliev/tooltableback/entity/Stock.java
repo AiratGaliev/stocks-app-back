@@ -17,7 +17,7 @@ public class Stock extends AbstractEntity {
   @JoinColumn(name = "company_id", nullable = false)
   @JsonIgnore
   private Company company;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate date;
   private double price;
 
