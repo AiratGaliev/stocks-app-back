@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,5 +47,17 @@ public class StockController {
     }
     Stock stock = stockService.create(stockRequest);
     return new ResponseEntity<>(stock, HttpStatus.CREATED);
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<?> update(@Valid @RequestBody StockRequest stockRequest,
+      BindingResult result,
+      @PathVariable String id) {
+    ResponseEntity<?> errorMap = mapValidationErrorService.getValidation(result);
+    if (errorMap != null) {
+      return errorMap;
+    }
+    Stock stock1 = stockService.update(stockRequest, id);
+    return new ResponseEntity<>(stock1, HttpStatus.OK);
   }
 }

@@ -8,5 +8,5 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
 
   Iterable<Company> findAll(Sort name);
 
-  Company findCompanyById(Long id);
+  Company findCompanyById(long parseLong);
 }

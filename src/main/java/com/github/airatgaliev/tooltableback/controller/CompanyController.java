@@ -50,13 +50,14 @@ public class CompanyController {
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<?> update(@Valid @RequestBody Company company, BindingResult result,
+  public ResponseEntity<?> update(@Valid @RequestBody CompanyRequest companyRequest,
+      BindingResult result,
       @PathVariable String id) {
     ResponseEntity<?> errorMap = mapValidationErrorService.getValidation(result);
     if (errorMap != null) {
       return errorMap;
     }
-    Company company1 = companyService.update(company, id);
+    Company company1 = companyService.update(companyRequest, id);
     return new ResponseEntity<>(company1, HttpStatus.OK);
   }
 }

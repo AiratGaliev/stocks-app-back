@@ -32,9 +32,9 @@ public class CompanyService {
     return companyRepository.save(newCompany);
   }
 
-  public Company update(Company category, String id) {
+  public Company update(CompanyRequest companyRequest, String id) {
     Company originalCompany = findById(id);
-    originalCompany.setName(category.getName());
+    originalCompany.setName(companyRequest.getName());
     return companyRepository.save(originalCompany);
   }
 }
