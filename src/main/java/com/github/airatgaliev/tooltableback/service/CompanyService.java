@@ -1,6 +1,7 @@
 package com.github.airatgaliev.tooltableback.service;
 
 import com.github.airatgaliev.tooltableback.entity.Company;
+import com.github.airatgaliev.tooltableback.payload.CompanyRequest;
 import com.github.airatgaliev.tooltableback.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -20,5 +21,10 @@ public class CompanyService {
 
   public Iterable<Company> findAll() {
     return companyRepository.findAll(Sort.by(Direction.ASC, "name"));
+  }
+
+  public Company create(CompanyRequest companyRequest) {
+    Company newCompany = new Company(companyRequest.getName());
+    return companyRepository.save(newCompany);
   }
 }
