@@ -19,12 +19,12 @@ public class Stock extends AbstractEntity {
   private Company company;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate date;
-  private double price;
+  private Double price;
 
   public Stock() {
   }
 
-  public Stock(Company company, LocalDate date, double price) {
+  public Stock(Company company, LocalDate date, Double price) {
     this.company = company;
     this.date = date;
     this.price = price;
@@ -46,12 +46,12 @@ public class Stock extends AbstractEntity {
     this.date = date;
   }
 
-  public double getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(double count) {
-    this.price = count;
+  public void setPrice(Double price) {
+    this.price = price;
   }
 
   @Override

@@ -35,15 +35,15 @@ public class LoadDatabase {
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     return args -> {
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company1, LocalDate.parse("01.01.2019", dateTimeFormatter), 2000)));
+          .save(new Stock(company1, LocalDate.parse("01.01.2019", dateTimeFormatter), 2000.0)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company2, LocalDate.parse("01.01.2019", dateTimeFormatter), 2500)));
+          .save(new Stock(company2, LocalDate.parse("01.01.2019", dateTimeFormatter), 2500.0)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company3, LocalDate.parse("05.01.2019", dateTimeFormatter), 10000)));
+          .save(new Stock(company3, LocalDate.parse("05.01.2019", dateTimeFormatter), 10000.0)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company1, LocalDate.parse("10.01.2019", dateTimeFormatter), 2500)));
+          .save(new Stock(company1, LocalDate.parse("10.01.2019", dateTimeFormatter), 2500.0)));
       LOGGER.info("Preloading " + stockRepository
-          .save(new Stock(company2, LocalDate.parse("07.10.2019", dateTimeFormatter), 2100)));
+          .save(new Stock(company2, LocalDate.parse("07.10.2019", dateTimeFormatter), 2100.0)));
     };
   }
 }
