@@ -50,4 +50,9 @@ public class StockService {
     originalStock.setPrice(stockRequest.getPrice());
     return stockRepository.save(originalStock);
   }
+
+  public void delete(String id) {
+    Stock post = findById(id);
+    stockRepository.delete(post);
+  }
 }

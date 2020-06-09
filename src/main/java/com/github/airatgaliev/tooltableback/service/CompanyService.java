@@ -1,8 +1,10 @@
 package com.github.airatgaliev.tooltableback.service;
 
 import com.github.airatgaliev.tooltableback.entity.Company;
+import com.github.airatgaliev.tooltableback.exception.IdException;
 import com.github.airatgaliev.tooltableback.payload.CompanyRequest;
 import com.github.airatgaliev.tooltableback.repository.CompanyRepository;
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -24,7 +26,11 @@ public class CompanyService {
   }
 
   public Company findById(String id) {
-    return companyRepository.findCompanyById(Long.parseLong(id));
+    try {
+      return companyRepository.findCompanyById(Long.parseLong(id));
+    } catch (NoSuchElementException | NullPointerException e) {
+      throw new IdException("Company ID: '" + id + "' does not exists");
+    }
   }
 
   public Company create(CompanyRequest companyRequest) {
@@ -36,5 +42,10 @@ public class CompanyService {
     Company originalCompany = findById(id);
     originalCompany.setName(companyRequest.getName());
     return companyRepository.save(originalCompany);
+  }
+
+  public void delete(String id) {
+    Company company = findById(id);
+    companyRepository.delete(company);
   }
 }
