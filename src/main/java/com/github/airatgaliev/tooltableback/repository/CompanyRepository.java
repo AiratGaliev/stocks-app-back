@@ -7,4 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface CompanyRepository extends CrudRepository<Company, Long> {
 
   Iterable<Company> findAll(Sort name);
+
+  Company findCompanyById(Long id);
 }
