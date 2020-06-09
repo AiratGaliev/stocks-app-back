@@ -23,8 +23,18 @@ public class CompanyService {
     return companyRepository.findAll(Sort.by(Direction.ASC, "name"));
   }
 
+  public Company findById(String id) {
+    return companyRepository.findCompanyById(Long.parseLong(id));
+  }
+
   public Company create(CompanyRequest companyRequest) {
     Company newCompany = new Company(companyRequest.getName());
     return companyRepository.save(newCompany);
+  }
+
+  public Company update(Company category, String id) {
+    Company originalCompany = findById(id);
+    originalCompany.setName(category.getName());
+    return companyRepository.save(originalCompany);
   }
 }
