@@ -48,6 +48,7 @@ public class StockService {
   public Stock update(StockRequest stockRequest, String id) {
     Stock originalStock = findById(id);
     originalStock.setPrice(stockRequest.getPrice());
+    originalStock.setDate(stockRequest.getDate());
     return stockRepository.save(originalStock);
   }
 

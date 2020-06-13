@@ -34,6 +34,10 @@ public class Stock extends AbstractEntity {
     return company.getName();
   }
 
+  public Long getCompanyId() {
+    return company.getId();
+  }
+
   public void setCompany(Company company) {
     this.company = company;
   }
