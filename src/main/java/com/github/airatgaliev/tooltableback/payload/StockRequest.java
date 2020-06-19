@@ -5,9 +5,11 @@ import javax.validation.constraints.NotNull;
 
 public class StockRequest {
 
+  @NotNull(message = "Please select date")
   private LocalDate date;
   @NotNull(message = "Please select stock company name")
   private Long companyId;
+  @NotNull(message = "Stock price is required")
   private Double price;
 
   public LocalDate getDate() {

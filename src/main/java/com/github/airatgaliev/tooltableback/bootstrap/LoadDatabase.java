@@ -18,11 +18,16 @@ public class LoadDatabase {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(LoadDatabase.class);
 
-  @Autowired
-  private StockRepository stockRepository;
+  private final StockRepository stockRepository;
+
+  private final CompanyRepository companyRepository;
 
   @Autowired
-  private CompanyRepository companyRepository;
+  public LoadDatabase(StockRepository stockRepository,
+      CompanyRepository companyRepository) {
+    this.stockRepository = stockRepository;
+    this.companyRepository = companyRepository;
+  }
 
   @Bean
   CommandLineRunner initDatabase() {

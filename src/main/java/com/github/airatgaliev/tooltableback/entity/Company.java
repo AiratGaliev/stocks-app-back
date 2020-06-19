@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import net.minidev.json.annotate.JsonIgnore;
@@ -11,6 +12,7 @@ import net.minidev.json.annotate.JsonIgnore;
 @Entity
 public class Company extends AbstractEntity {
 
+  @Column(nullable = false, unique = true)
   private String name;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "company", orphanRemoval = true)

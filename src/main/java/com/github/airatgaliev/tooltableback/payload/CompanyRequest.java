@@ -1,10 +1,10 @@
 package com.github.airatgaliev.tooltableback.payload;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class CompanyRequest {
 
-  @NotBlank(message = "Company name cannot be blank")
+  @Size(min = 2, max = 20, message = "Name must be between 2 and 50 characters")
   private String name;
 
   public String getName() {
